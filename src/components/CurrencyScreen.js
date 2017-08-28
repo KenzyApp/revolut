@@ -16,7 +16,7 @@ export default class CurrencyScreen extends Component {
 
         return (
             <div className={className}>
-                CurrencyScreen
+                Exchange
             </div>
         );
     }
