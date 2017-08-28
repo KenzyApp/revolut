@@ -1,7 +1,12 @@
 import {combineReducers} from 'redux';
 
 const initialCurrencies = {
-   test: 'tmp'
+    PLN: {
+       name: 'zloty'
+    },
+    GBP: {
+       name: 'pound'
+    }
 };
 
 const currencies = (state=initialCurrencies, action) => {
