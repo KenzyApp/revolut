@@ -1,7 +1,8 @@
 @import 'containers/App/_App.scss';
 
 // components
-@import './components/_CurrencyScreen.scss';
+@import 'components/CurrencyScreen/CurrencyScreen';
+@import 'components/Dropdown/_Dropdown.scss';
 
 body, html, #root  {
   height: 100%;

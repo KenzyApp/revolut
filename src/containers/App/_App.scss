@@ -12,5 +12,48 @@
   transform: translate(-50%, -50%);
 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
+  .top-panel {
+    width: 100%;
+    position: relative;
+    height: 30px;
+
+    .exchange-cancel {
+      position: absolute;
+      left: 10px;
+      top: 5px;
+    }
+
+    .exchange-title {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 15px;
+    }
+
+    .exchange-icon {
+      width: 20px;
+      position: absolute;
+      right: 10px;
+      top: 5px;
+    }
+
+    border-bottom: 1px solid lightgray;
+  }
+
+  .app-content {
+    height: 470px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    .currency-widget {
+      flex: 1;
+      padding: 20px;
+      border-bottom: 1px solid lightgray;
+    }
+  }
 }
 

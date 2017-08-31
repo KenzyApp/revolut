@@ -8,6 +8,68 @@
   top: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); }
+  .App .top-panel {
+    width: 100%;
+    position: relative;
+    height: 30px;
+    border-bottom: 1px solid lightgray; }
+    .App .top-panel .exchange-cancel {
+      position: absolute;
+      left: 10px;
+      top: 5px; }
+    .App .top-panel .exchange-title {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 15px; }
+    .App .top-panel .exchange-icon {
+      width: 20px;
+      position: absolute;
+      right: 10px;
+      top: 5px; }
+  .App .app-content {
+    height: 470px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: left; }
+    .App .app-content .currency-widget {
+      flex: 1;
+      padding: 20px;
+      border-bottom: 1px solid lightgray; }
+
+.CurrencyScreen {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(0, 0, 0, 0.1); }
+  .CurrencyScreen.focused {
+    background-color: white; }
+  .CurrencyScreen .Dropdown {
+    flex: 1;
+    padding-top: 10px; }
+  .CurrencyScreen .currency-screen-right {
+    flex: 1; }
+    .CurrencyScreen .currency-screen-right .currency-input {
+      width: 100%;
+      height: 30px;
+      font-size: 26px;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid gray;
+      background-color: transparent; }
+      .CurrencyScreen .currency-screen-right .currency-input:focus {
+        border-bottom: 1px solid black; }
+
+.Dropdown {
+  cursor: pointer; }
+  .Dropdown .dropdown-items {
+    margin-top: 7px;
+    padding: 10px;
+    outline: 1px solid gray;
+    display: grid;
+    font-size: 15px;
+    width: 100px; }
 
 body, html, #root {
   height: 100%;

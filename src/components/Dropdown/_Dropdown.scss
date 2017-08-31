@@ -1,0 +1,16 @@
+
+.Dropdown {
+
+  cursor: pointer;
+
+  .dropdown-items {
+    margin-top: 7px;
+    padding: 10px;
+    outline: 1px solid gray;
+    display: grid;
+    font-size: 15px;
+    width: 100px;
+  }
+
+}
+
