@@ -1,6 +1,6 @@
 
 import ActionTypes from './actionTypes';
-
+import Utils from "../utils";
 
 export const exchange = () => {
     return (dispatch, getState) => {
@@ -8,40 +8,26 @@ export const exchange = () => {
         const firstCode = state.app.firstSelectedCurrency;
         const secondCode = state.app.secondSelectedCurrency;
 
-        const parsedFirstAmount = state.app.firstAmount.split('.');
-        const firstAmount = parseInt(parsedFirstAmount[0]);
-        const firstAmountComma = Math.round((parseFloat(state.app.firstAmount).toFixed(2) - firstAmount) * 100);
+        const [firstAmount, firstAmountComma] = Utils.parseAmount(state.app.firstAmount);
+        const [secondAmount, secondAmountComma] = Utils.parseAmount(state.app.secondAmount);
 
-        const parseSecondAmount = state.app.secondAmount.split('.');
-        const secondAmount = parseInt(parseSecondAmount[0]);
-        const secondAmountComma = Math.round((parseFloat(state.app.secondAmount).toFixed(2) - secondAmount) * 100);
+        let flag = state.app.focusedCurrency === firstCode ? 1 : -1;
 
-        let flag = 1;
+        const [updatedFirst, updatedFirstComma] = Utils.calculateAmount(
+            state.wallets[firstCode].amount,
+            state.wallets[firstCode].commaAmount,
+            firstAmount,
+            firstAmountComma,
+            flag
+        );
 
-        if (state.app.focusedCurrency !== firstCode) {
-            flag = -1;
-        }
-
-        let updatedFirst = state.wallets[firstCode].amount - flag * firstAmount;
-        let updatedFirstComma = state.wallets[firstCode].commaAmount - flag * firstAmountComma;
-
-        if (updatedFirstComma >= 100) {
-            updatedFirst++;
-            updatedFirstComma -= 100;
-        } else if (updatedFirstComma < 0) {
-            updatedFirstComma = 100 + updatedFirstComma;
-            updatedFirst--;
-        }
-        let updatedSecond = state.wallets[secondCode].amount + flag * secondAmount;
-        let updatedSecondComma = state.wallets[secondCode].commaAmount + flag * secondAmountComma;
-        if (updatedSecondComma >= 100) {
-            updatedSecond++;
-            updatedSecondComma -= 100;
-        } else if (updatedSecondComma < 0) {
-            updatedSecondComma = 100 + updatedSecondComma;
-            updatedSecond--;
-        }
-        
+        const [updatedSecond, updatedSecondComma] = Utils.calculateAmount(
+            state.wallets[secondCode].amount,
+            state.wallets[secondCode].commaAmount,
+            secondAmount,
+            secondAmountComma,
+            -flag
+        );
         dispatch({
             type: ActionTypes.EXCHANGE,
             firstCode,
