@@ -4,7 +4,13 @@
   display: flex;
   flex-direction: row;
   background-color: rgba(0,0,0,0.1);
+  position: relative;
 
+  .balance {
+    position: absolute;
+    top: 60px;
+    font-size: 10px;
+  }
 
   &.focused {
     background-color: white;

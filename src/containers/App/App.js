@@ -13,6 +13,14 @@ const mapStateToProps = (state) => {
         firstAmount: state.app.firstAmount,
         secondAmount: state.app.secondAmount,
         focusedCurrency: state.app.focusedCurrency,
+        firstBalance: [
+            state.app.firstSelectedCurrency,
+            state.wallets[state.app.firstSelectedCurrency]
+        ],
+        secondBalance: [
+            state.app.secondSelectedCurrency,
+            state.wallets[state.app.secondSelectedCurrency]
+        ]
     })
 };
 
@@ -23,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
         focusOnCurrency: actions.focusOnCurrency,
         updateCurrencies: actions.updateCurrencies,
         setAmounts: actions.setAmounts,
-        exchange: () => {}
+        exchange: actions.exchange
     }, dispatch);
 };
 
@@ -39,6 +47,10 @@ export default class App extends Component {
         console.log('currency: ', currency);
         this.props.focusOnCurrency(currency);
     };
+
+    getBalance(balance) {
+        return `${balance[1].amount}.${balance[1].commaAmount} ${balance[0]}`;
+    }
 
     render() {
         const availableCurrencies = Object.keys(this.props.currencies);
@@ -75,6 +87,7 @@ export default class App extends Component {
                         exchangeAmount={this.props.firstAmount}
                         onClick={() => {this.setFocus(
                             this.props.firstSelectedCurrency)}}
+                        balance={this.getBalance(this.props.firstBalance)}
                     />
                     <CurrencyScreen
                         availableCurrencies={availableCurrencies}
@@ -85,6 +98,7 @@ export default class App extends Component {
                         exchangeAmount={this.props.secondAmount}
                         onClick={() => {this.setFocus(
                             this.props.secondSelectedCurrency)}}
+                        balance={this.getBalance(this.props.secondBalance)}
                     />
 
                 </div>

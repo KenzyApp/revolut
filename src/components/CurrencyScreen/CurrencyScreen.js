@@ -12,7 +12,8 @@ export default class CurrencyScreen extends Component {
         onCurrencyChoose: PropTypes.func.isRequired,
         updateExchangeAmount: PropTypes.func.isRequired,
         exchangeAmount: PropTypes.string.isRequired,
-        onClick: PropTypes.func
+        onClick: PropTypes.func,
+        balance: PropTypes.string.isRequired
     };
 
     onChange = (event) => {
@@ -39,6 +40,9 @@ export default class CurrencyScreen extends Component {
                            onChange={this.onChange}
                            value={this.props.exchangeAmount}
                            type="number" />
+                </div>
+                <div className="balance">
+                    <span>Balance: {this.props.balance}</span>
                 </div>
             </div>
         );

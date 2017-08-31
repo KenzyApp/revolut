@@ -42,7 +42,12 @@
 .CurrencyScreen {
   display: flex;
   flex-direction: row;
-  background-color: rgba(0, 0, 0, 0.1); }
+  background-color: rgba(0, 0, 0, 0.1);
+  position: relative; }
+  .CurrencyScreen .balance {
+    position: absolute;
+    top: 60px;
+    font-size: 10px; }
   .CurrencyScreen.focused {
     background-color: white; }
   .CurrencyScreen .Dropdown {

@@ -2,7 +2,7 @@
 export default class Utils {
 
     static exchange(fromRate, toRate, amount) {
-        return amount * fromRate / toRate;
+        return (amount * fromRate / toRate).toFixed(2).toString();
     }
 
 }

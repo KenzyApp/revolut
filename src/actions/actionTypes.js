@@ -7,9 +7,8 @@ export default class ActionTypes {
     static FOCUS_ON_CURRENCY = 'FOCUS_ON_CURRENCY';
     static UPDATE_RATES = 'UPDATE_RATES';
 
-    static SET_FIRST_AMOUNT = 'SET_FIRST_AMOUNT';
-    static SET_SECOND_AMOUNT = 'SET_SECOND_AMOUNT';
-
     static SET_AMOUNTS = 'SET_AMOUNTS';
+
+    static EXCHANGE = 'EXCHANGE';
 
 }
